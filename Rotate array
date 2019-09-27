@@ -1,0 +1,21 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(myarray, count) {
+    // write your code in JavaScript (Node.js 8.9.4)
+  
+var arraylength=myarray.length;
+for(var i=0; i<count; i++){
+  if(i!=0){
+  myarray=newarray;
+  }
+  var newarray=[];
+  newarray[0]=myarray[arraylength-1];
+  for(var j=1; j<arraylength; j++){
+ newarray[j]=myarray[j-1];
+  }
+
+}
+return newarray;
+}
+ console.log(solution([1,2,3,4], 4));
