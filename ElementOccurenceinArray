@@ -1,0 +1,19 @@
+function oddccurence(mrarry) {
+  var checkodd = mrarry.length;
+  var count = 0
+  if (checkodd % 2 !== 0) {
+    for (var i = 0; i <= mrarry.length - 1; i++) {
+      for (var j = 0; j <= mrarry.length - 1; j++) {
+        if (mrarry[j] == mrarry[i]) {
+          count++;
+        }
+      }
+      if (count % 2 !== 0) {
+        return mrarry[i];
+      }
+    }
+  }
+
+}
+var newarry = [3, 4, 5, 5, -7, -7,-7, 4, 3, 5,5];
+console.log(oddccurence(newarry));
