@@ -1,0 +1,37 @@
+// Try edit message
+function solution(A){
+var arrlen= A.length;
+var temp;
+var perm;
+
+for(var i=1; i<arrlen; i++){
+var forward=0;
+var backward=0;
+var check;
+for(var j=0; j<arrlen; j++){
+   console.log(A[i+j]);
+  if(A[i+j] <arrlen){
+forward = forward + A[i+j];
+console.log("forward" + forward);
+  }
+
+ if(i-(j+1)>=0){
+  backward = backward + A[i-(j+1)];
+console.log("bac" + backward);
+}
+}
+
+temp= Math.abs(backward-forward);
+console.log("temp" + temp);
+
+  if(perm>temp){
+  perm=temp;
+}
+
+
+}
+return "its " + perm;
+}
+
+var A=[3,1,2,4,3];
+console.log(solution(A));
