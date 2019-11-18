@@ -1,0 +1,9 @@
+function solution(myarray){
+  var arrlen= myarray.length;
+  for(var i=0; i<arrlen; i++){
+      if(!myarray.includes(i+1)){
+return 0;
+      }
+  }
+  return 1;
+}
