@@ -1,14 +1,31 @@
+
 function solution(position,myarray){
 
       if(myarray.includes(position)){
-        var arrposi= myarray.indexOf(position);
-        var newarray= myarray.slice(0, arrposi+1);
+        
+      var occurarray=  myarray.reduce(function(a, e, i){
+          if(e===position)
+          a.push(i);
+          return a;
+        }, []);
+     
+        for(var j=0; j<occurarray.length; j++){
+    
+  var newarray= myarray.slice(0, occurarray[j]+1);
             for(var i=0; i<position; i++){
-                if(!newarray.includes(i+1)){
-          return -1 ;
+                if(newarray.includes(i+1)==true) {
+                if( i==(position-1)){
+                   return occurarray[j] ;
                 }
+                }
+                else{
+                  break;
+                }
+               
             }
-          return myarray.indexOf(position);
+
+        }
+       return -1;
   }
   else{
     return -1;
