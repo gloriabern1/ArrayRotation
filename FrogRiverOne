@@ -1,0 +1,16 @@
+function solution(position,myarray){
+
+      if(myarray.includes(position)){
+        var arrposi= myarray.indexOf(position);
+        var newarray= myarray.slice(0, arrposi+1);
+            for(var i=0; i<position; i++){
+                if(!newarray.includes(i+1)){
+          return -1 ;
+                }
+            }
+          return myarray.indexOf(position);
+  }
+  else{
+    return -1;
+  }
+}
