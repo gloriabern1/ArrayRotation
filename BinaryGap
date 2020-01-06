@@ -1,0 +1,36 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(numb){
+var newarr=numb.toString(2);
+var binrep=[...newarr];
+var arrylength= binrep.length;
+
+var keparr=[];
+var temp1=[];
+var temp2=[];
+for(var i=0; i<arrylength; i++){
+  if(binrep[i]=="1" ){
+    
+    if(temp1!=[] && temp2!=[]){
+      if(temp1.length== temp2.length){
+        temp1=[];
+      }
+      else if(temp1.length>temp2.length){
+        temp2=[...temp1];
+        temp1=[];
+      }
+    }
+   
+    temp1=[];
+  
+}
+else if(binrep[i]="0"){
+  temp1.push(binrep[i]);
+}
+}
+if(temp2!=[]){
+ 
+  return temp2.length;
+}
+}
