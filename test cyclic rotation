@@ -19,3 +19,19 @@ for(var i=0; i<count; i++){
 return newarray;
 }
  console.log(solution([1,2,3,4], 4));
+
+
+
+//solution with array function
+
+function solution(myarray, count) {
+    // write your code in JavaScript (Node.js 8.9.4)
+  
+var firstele;
+for(var i=0; i<count; i++){
+  firstele=myarray.pop();
+  myarray.splice(0,0,firstele)
+  
+}
+return myarray;
+}
