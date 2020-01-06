@@ -1,0 +1,14 @@
+function Solution(mrarry) {
+var result;
+ mrarry.map(function(ele){
+      var newarr=mrarry.filter(a=> a==ele);
+       if (newarr.length % 2 !== 0) {
+         result= ele;
+        
+      }
+ })  
+     return result;
+    }
+  
+
+  console.log(Solution([4,4,5,5,6,6,6]))
