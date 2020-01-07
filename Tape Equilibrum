@@ -52,8 +52,7 @@ backwardacc= backward.reduce((acc, curr)=>{return acc+ curr});
 temp.push(Math.abs(backwardacc-forwardacc));
 }
 
-temp.sort();
+temp.sort((a,b)=>{return a-b});
+
 return  temp.shift();
 }
-
-console.log(solution([3,6,8,4,-3]));
