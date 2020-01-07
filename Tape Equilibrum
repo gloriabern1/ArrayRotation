@@ -27,3 +27,33 @@ if(perm===undefined){
 }
 return  perm;
 }
+
+
+
+
+Refined solution
+
+function solution(A){
+let arrlen= A.length;
+let temp=[];
+
+for(let i=1; i<arrlen; i++){
+
+let forward=[];
+let backward=[];
+let forwardacc=0;
+let backwardacc=0;
+
+ forward= A.slice(i, arrlen);
+ backward=A.slice(0, i);
+forwardacc= forward.reduce((acc, curr)=>{return acc+ curr});
+backwardacc= backward.reduce((acc, curr)=>{return acc+ curr});
+
+temp.push(Math.abs(backwardacc-forwardacc));
+}
+
+temp.sort();
+return  temp.shift();
+}
+
+console.log(solution([3,6,8,4,-3]));
