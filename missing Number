@@ -1,0 +1,27 @@
+
+function solution(A){
+  const maina=[...A], B=[...A];
+let mainarray= A.sort((a,b)=> {return a-b});
+
+let start= mainarray.shift();
+mainarray= maina.sort((a,b)=> {return a-b});
+
+let last= mainarray.pop();
+let output=0;
+if(last <=0 || start >1){
+  return 1;
+}
+
+for (let i=start; i<=last; i++){
+  
+  if(B.includes(i)== false && i >= 1){
+
+    output=i;
+    break;
+  }
+}
+if(output==0 ){
+    output=last + 1;
+}
+return output;
+}
