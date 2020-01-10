@@ -1,0 +1,42 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function printCombination(out, n){
+  //console.log(out);
+  var returnarry=[]
+  for (var i=0; i<n; i++){
+    returnarry.push(out[i]);
+     //console.log(returnarry);
+  }
+  //console.log(returnarry);
+return returnarry;
+}
+
+function recur(i, n, out, index){
+  var temp;
+  var perm=0;
+  if(n===0){
+    var myarr=[];
+   //console.log(  printCombination(out, index));
+   myarr=[...printCombination(out, index)];
+    temp=myarr.length;
+    //console.log(temp);
+    if(perm=0 || perm>temp){
+      perm=temp;
+    }
+
+  }
+  var j;
+  for(j=i; j<=n; j++){
+    out[index]=j;
+    recur(j, n-j, out, index+1);
+  }
+  return perm;
+}
+
+function solution(n){
+  var myarr= new Array(n);
+  //console.log( recur(1,n,myarr, 0));
+  return recur(1,n,myarr, 0)
+}
+//console.log(solution(5));
