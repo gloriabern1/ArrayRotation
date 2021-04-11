@@ -1,33 +1,30 @@
-function solution(A){
-var arrlen= A.length;
-var temp;
-var perm;
 
-for(var i=1; i<arrlen; i++){
-var forward=0;
-var backward=0;
-var check;
-for(var j=0; j<arrlen; j++){
-  if(A[i+j] <arrlen){
-forward = forward + A[i+j];
+//100% working
+
+
+function solution(A) {
+  // write your code in JavaScript (Node.js 8.9.4)
+
+  var comulativetotal = 0;
+  var min = Number.MAX_SAFE_INTEGER;
+
+  var arrlen = A.length;
+  var total = A.reduce((a, b) => {
+    return a + b;
+  });
+
+  for (var i = 0; i < arrlen - 1; i++) {
+    comulativetotal += A[i];
+    var backward = comulativetotal;
+    var forward = total - backward;
+    var diff = Math.abs(backward - forward);
+    if (diff < min) {
+      min = diff;
+    }
   }
-
- if(i-(j+1)>=0){
-  backward = backward + A[i-(j+1)];
+  return min;
 }
-}
-temp= Math.abs(backward-forward);
-
-if(perm===undefined){
-  perm=temp;
-}
-  else if(perm>temp){
-  perm=temp;
-}
-}
-return  perm;
-}
-
+console.log(solution([3, 1, 2, 4, 3]));
 
 
 
