@@ -22,16 +22,19 @@ return newarray;
 
 
 
-//solution with array function
+// 100% solution with array function
 
 function solution(myarray, count) {
     // write your code in JavaScript (Node.js 8.9.4)
   
+  if(myarray ===undefined || myarray.length===0){
+    return [];
+  }
 var firstele;
 for(var i=0; i<count; i++){
   firstele=myarray.pop();
   myarray.splice(0,0,firstele)
   
 }
-return myarray;
+return(myarray);
 }
