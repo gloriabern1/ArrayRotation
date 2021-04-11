@@ -36,3 +36,14 @@ return i;
   }
  
 }
+
+
+//100% correct solution
+function solution(myarray){
+  var n= myarray.length +1;
+var totalarray= n*(n+1)/2;
+var totalmainarray= myarray.reduce((a,b)=>a+b,0);
+var missingnumber= totalarray-totalmainarray;
+ return missingnumber;
+ 
+}
