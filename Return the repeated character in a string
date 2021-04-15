@@ -1,0 +1,25 @@
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+
+function solution(S) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  var stringarr = S.split('');
+  var hash = new Map();
+  var result = [];
+  for (let i = 0; i < stringarr.length; i++) {
+    if (hash.get(stringarr[i]) === undefined) {
+      hash.set(stringarr[i], true);
+    } else {
+      const value = hash.get(stringarr[i]);
+      if (value) {
+        hash.set(stringarr[i], !value);
+      }
+    }
+  }
+  hash.forEach((v, k) => {
+    if (!v)
+      result.push(k);
+  });
+  return result.shift();
+}
