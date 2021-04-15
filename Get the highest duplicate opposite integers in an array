@@ -1,0 +1,13 @@
+function solution(A) {
+    // write your code in JavaScript (Node.js 8.9.4)
+    var  sortedarray=A.sort((a,b)=>{return a-b});
+    
+    for(var i=0; i<sortedarray.length; i++){
+        var lastele= sortedarray[length-(i+1)];
+        if(sortedarray.includes(-lastele))
+        {
+            return lastele;
+        }
+    }
+    return 0;
+}
