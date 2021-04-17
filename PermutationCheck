@@ -7,3 +7,16 @@ return 0;
   }
   return 1;
 }
+
+//100% solution
+function solution(myarray){
+  let arrSet= new Set(myarray);
+  let arrlen=myarray.length+1;
+ for(let i=1; i<arrlen; i++)
+ {
+   if(!arrSet.has(i)){
+     return 0;
+   }
+ }
+  return 1;
+}
