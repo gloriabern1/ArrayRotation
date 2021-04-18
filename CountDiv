@@ -1,0 +1,16 @@
+function solution(A,B,k){
+  if(A===0){
+    return Math.floor(B/k) +1;
+  }
+   if(A===1 && k===1){
+    return B;
+  }
+  let fk= (A%k===0) ? 1:0;
+    let tempB=(k*(Math.floor(A/k))) +k;
+    while(tempB <= B){
+      fk +=1;
+      tempB+=k;
+    }
+  
+return fk;
+}
