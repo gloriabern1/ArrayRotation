@@ -1,0 +1,29 @@
+function solution(S, P, Q){
+  const necmap=new Map();
+  necmap.set('A',1);
+  necmap.set('C',2);
+  necmap.set('G',3);
+  necmap.set('T',4);
+
+  let strArr=[...S];
+  let arrlen= P.length;
+  let finalarray=[];
+  for(var i=0; i<arrlen; i++){
+    let pi=P[i];
+    let qi=Q[i];
+    var slicesarray=strArr.slice(pi,qi+1);
+    var slicedset= new Set(slicesarray);
+    let tempvalue=0;
+    for(let item of slicedset){
+      
+      let ipf=necmap.get(item);
+      tempvalue=tempvalue===0 || ipf<tempvalue? ipf: tempvalue;
+ 
+    }
+    finalarray.push(tempvalue);
+
+  }
+return finalarray;
+
+}
+console.log(solution("CAGCCTA", [2,5,0],[4,5,6]))
