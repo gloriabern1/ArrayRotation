@@ -1,0 +1,26 @@
+function solution(A){
+  const SE=[];
+  const GE=[];
+  const arl=A.length;
+
+  GE[0]=A[0];
+  SE[arl-1]= A[arl-1];
+  for(let i=1; i< arl; i++){
+    if(GE[i-1]<A[i]) GE[i]=A[i];
+    else GE[i]=GE[i-1];
+  }
+//GE=[4,4,4,5,8,8,8]
+  for(let j=arl-2; j>=0; j--){
+    if(A[j]<SE[j+1]) SE[j] =A[j];
+    else SE[j] =SE[j+1];
+  }
+//SE=[2,2,5,6,6,7];
+  for(let k=0; k<arl; k++){
+    if((k===0 && A[k]< SE[k+1]) || (k===arl-1 && A[k]> GE[k-1])
+     || (A[k]<SE[k+1] && A[k] >GE[k-1]))
+    return A[k];
+  }
+  return -1;
+}
+
+console.log(solution([4, 3, 2, 5, 8, 6, 7]));
