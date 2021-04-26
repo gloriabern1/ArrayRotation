@@ -18,3 +18,26 @@ function solution(A) {
   return EquipArr;
 }
 console.log(solution([-7, 1, 5, 2, -4, 3, 0]));
+
+function solution(A) {
+  //PA is the prefix sum array
+  let PA = [];
+  //Equiparr is the equilibrum index array
+  let EquipArr = [];
+  //let PE = 0;
+   PA[0]= A[0];
+  for (let i = 1; i < A.length; i++) {
+    //PE += A[i];
+    PA[i]=A[i]+PA[i-1];
+  }
+  for (let i = 1; i < A.length - 1; i++) {
+    var ls = PA[i - 1];
+    var rs = PA[A.length - 1] - PA[i];
+    if (ls === rs) {
+      EquipArr.push(i);
+    }
+  }
+  return PA;
+}
+console.log(solution([-7, 1, 5, 2, -4, 3, 0]));
+
