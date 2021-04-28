@@ -1,0 +1,43 @@
+function mansol(A){
+let inversioncount=0;
+solution(A);
+function solution(A) {
+  if (A.length <= 1) {
+    return A;
+  }
+  const mid = Math.floor(A.length / 2);
+  const left = A.slice(0, mid);
+  const Rit = A.slice(mid);
+  var result= mergeTopDown(solution(left), solution(Rit));
+  //console.log("fir "+ result);
+  return result;
+}
+
+function mergeTopDown(left, Rit) {
+
+// console.log(left);
+// console.log(Rit);
+  const SA = [];
+  while(left.length && Rit.length)
+  {
+    if (left[0] < Rit[0]) {
+      SA.push(left.shift());
+    } else {
+      inversioncount+=left.length;
+      SA.push(Rit.shift());
+    }
+   }
+//  console.log(left);
+// console.log(Rit);
+let rarr=SA.concat(left.slice()).concat(Rit.slice());
+// console.log("SA " + rarr);
+// console.log(inversioncount);
+  return rarr;
+}
+return inversioncount;
+}
+
+
+let arr = [7,3,2,8,1];
+console.log(mansol(arr));
+
