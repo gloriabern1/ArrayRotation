@@ -1,0 +1,26 @@
+var duplicateZeros = function (arr) {
+  let arrlen = arr.length;
+  let elc = 0;
+  for (var i = 0; i < arrlen; i += elc) {
+   
+    if (arr[i] === 0) {
+      let newle = arrlen - (i + 1);
+      let c=1;
+      for (var j = newle; j > 0; j--) {
+        arr[arrlen-c] = arr[arrlen-c - 1];
+        c++;
+      }
+
+      if (i + 1 < arrlen) {
+        arr[i + 1] = 0;
+        elc = 2;
+      } 
+    } 
+    
+    else {
+      elc = 1;
+    }
+  }
+
+  return arr;
+};
