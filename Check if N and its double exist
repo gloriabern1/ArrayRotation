@@ -1,0 +1,28 @@
+var checkIfExist = function (arr) {
+  var arrlen = arr.length;
+  //Checking edge cases
+  if (arrlen === 0 || arrlen === 1) {
+    return false;
+  }
+  //using a set to check the double of each element in the array.
+  //As set have better time complexity than array when searching for an element
+  let setche = new Set();
+  for (let i = 0; i < arrlen; i++) {
+    let doublenum = arr[i] * 2;
+    //Check if the element divide by 2 exists in the set
+    if (arr[i] % 2 === 0) {
+      let divnum = arr[i] / 2;
+      if (setche.has(divnum)) {
+        return true;
+      }
+    } 
+    //Check if the element * 2 exists in the array
+     if (setche.has(doublenum)) {
+      return true;
+    } else {
+      setche.add(arr[i]);
+    }
+  }
+
+  return false;
+};
