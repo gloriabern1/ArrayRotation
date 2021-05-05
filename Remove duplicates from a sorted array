@@ -1,0 +1,13 @@
+var removeDuplicates = function(nums) {
+    var arrlen=nums.length;
+    var count=1;
+    for(i=1; i<arrlen; i++){
+    //Check if the current element is not a duplicate of the previous element
+        if(nums[i]!=nums[i-1]){
+        //Then we place the element in the correct positon on the array.
+            nums[count]=nums[i];
+            count++
+        }
+    }
+    return count;
+};
