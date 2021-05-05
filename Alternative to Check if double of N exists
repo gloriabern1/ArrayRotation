@@ -1,0 +1,14 @@
+var checkIfExist = function(A) {
+//Create a new object
+    const M = {};
+    //Iterating through the array
+    for (let a of A) {
+      console.log(M);
+      //Checking if double of array element or 2 division exists in the object
+        if (M[a / 2] || M[a * 2]) return true;
+        //If the element does not exist, we add it ot the object as a propertname, and set the value to anything
+        M[a] = 1;
+    }
+    return false;
+};
+console.log(checkIfExist([10,2,5,3]));
