@@ -1,0 +1,35 @@
+var validMountainArray = function(arr) {
+ 
+  var malent= arr.length;
+  if(malent <=2 ){
+    return false;
+  }
+  var mountinde=0
+  for(let i=1; i<malent; i++){
+    if(arr[i-1] < arr[i] && arr[i] > arr[i+1]){
+ mountinde=i;
+    }
+  }
+  if(mountinde===0){
+    return false
+  }
+  else{
+    var othernum = malent- (mountinde+1);
+    var count=(othernum + 1 > mountinde+1)? othernum+1 : mountinde+1;
+  
+    for(let j=1; j<count; j++){
+     
+      if(arr[mountinde-j] && !(arr[mountinde-(j-1)] > arr[mountinde-j])){
+       
+return false;
+      }
+
+      if(arr[mountinde+j] && !(arr[mountinde+(j-1)] > arr[mountinde+j])){
+    
+ return false;
+      }
+    }
+  }
+   
+    return true;
+};
