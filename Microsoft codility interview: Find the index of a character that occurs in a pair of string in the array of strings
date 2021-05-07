@@ -1,0 +1,33 @@
+function solution(S) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  var map = {};
+
+  let Slen = S.length;
+  for (let i = 0; i < Slen; i++) {
+    var stringarr = [...S[i]];
+    var strlen = stringarr.length;
+    //looping through the string values of each array element
+    for (var j = 0; j < strlen; j++) {
+    //checking if the character in the string is already in the map object
+      if (map[stringarr[j]]) {
+        console.log('hi');
+        var objarr = map[stringarr[j]]
+        //Checking if the index of the charcter in the current string value is in the object
+        if (objarr[1] === j) {
+        //if we find the string index is the same for what exists in the map.
+        //we return the array containing all appropriate indecies
+          return [objarr[0], i, objarr[1]];
+        } 
+      } else {
+      // since the charcter is not in the map object, we add it to the map object and its value is its index 
+        map[stringarr[j]] = [i, j];
+        console.log(stringarr[j]);
+        console.log(map[stringarr[j]]);
+      }
+    }
+  }
+  console.log('g');
+  return [];
+}
+
+console.log(solution(['abc', 'bca', 'dbe']));
