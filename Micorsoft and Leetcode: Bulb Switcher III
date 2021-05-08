@@ -1,0 +1,23 @@
+Runtime: 80 ms, faster than 97.85% of JavaScript online submissions for Bulb Switcher III.
+Memory Usage: 44.6 MB, less than 92.47% of JavaScript online submissions for Bulb Switcher III.
+
+//Explanation
+
+I just sumed the index of all the turned on bulbs, and compared them to the sum of the turned on bulbs. If they are equal then they are all blue.
+
+var numTimesAllBlue = function(light) {
+
+let SumIndex = 0;
+const Arraylength = light.length;
+let count=0;
+for (var i = 0; i < Arraylength; i++) {
+SumIndex += light[i];
+let TurnedonBulbscount= i+1;
+let sumturnedonbulbs= (TurnedonBulbscount*(TurnedonBulbscount+1))/2;
+if(SumIndex===sumturnedonbulbs) {
+count++;
+}
+}
+return count;
+
+};
