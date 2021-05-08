@@ -11,9 +11,13 @@ let SumIndex = 0;
 const Arraylength = light.length;
 let count=0;
 for (var i = 0; i < Arraylength; i++) {
+//summing the values of turned on bulbs
 SumIndex += light[i];
+//getting th count of turned on bulbs using the index
 let TurnedonBulbscount= i+1;
+//Getting the correct sum of turned on bulbs using the index (n*(n+1))/2
 let sumturnedonbulbs= (TurnedonBulbscount*(TurnedonBulbscount+1))/2;
+//comparing the sum of the values of turned on bulbs to the sum of tuned on bulbs count
 if(SumIndex===sumturnedonbulbs) {
 count++;
 }
