@@ -1,0 +1,20 @@
+var moveZeroes = function (nums) {
+var arrlen = nums.length;
+//count to track the point where a zero has been updated to a number from the beginning of the array
+var count = 0;
+for (var i = 0; i < arrlen; i++) {
+//Checking if we encounter a non zero value
+if (nums[i] !== 0) {
+//We set the point where we encountered a zero value that has not been replaced with a non zero value
+nums[count] = nums[i];
+//Checking if the rray index and zero pointer count are not the same position
+if (i !== count) {
+nums[i] = 0;
+}
+//We increment the count, once we have replaced a zero value at point count with a non zero value
+  count++;
+}
+
+}
+return nums;
+};
