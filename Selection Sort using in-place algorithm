@@ -1,0 +1,19 @@
+//Selection Sort using in-place operation
+
+function solution(A) {
+  var arrlen= A.length;
+ // loop through the whole array
+ for(var i=0; i<arrlen; i++){
+//loops through the unsorted part of the array
+   for(var j=(i+1); j<arrlen; j++){
+   //Finds the next minimum value for from the unsorted part of the array
+      if (A[i] > A[j]) {
+        var temp=A[i];
+        //Sets the next minimum value to the current count of A[i] and sets that value of [i] to A[j]
+        A[i]=A[j];
+        A[j]=temp;
+      }
+   }
+ }
+ return A;
+}
