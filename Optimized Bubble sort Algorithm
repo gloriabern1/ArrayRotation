@@ -1,0 +1,21 @@
+function solution(A) {
+  var arrlen = A.length;
+  //loop through all elements int he array
+  for (var j = 0; j < arrlen - 2; j++) {
+  //Flag to check if all element in the array have been sorted, in the first round loop
+    var sortflag=0;
+    //loop all elements in the array that have not been sorted
+    for (var i = 0; i < arrlen - (1 + j); i++) {
+    
+      var temp = A[i];
+      //Check elements and swap
+      if (A[i] > A[i + 1]) {
+        A[i] = A[i + 1];
+        A[i + 1] = temp;
+        sortflag=1;
+      }
+    }
+    if(sortflag===0) break;
+  }
+  return A;
+}
