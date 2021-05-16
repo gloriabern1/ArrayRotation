@@ -1,0 +1,26 @@
+function solution(A) {
+  var arrlen = A.length;
+   A = A.sort((a, b) => {
+    return a - b;
+  });
+  var minvalue=1000000;
+  var flag=0;
+  for (var i = 0; i < arrlen - 1; i++) {
+    var diff= Math.abs(A[i]-A[i+1]);
+   // console.log(diff);
+   if(!A.includes(diff)){
+     flag=1;
+     minvalue= Math.min(minvalue, diff);
+   }
+  }
+
+ if (minvalue>100000000) {
+      return -1
+    }
+    else if(flag ===0){
+      return -2;
+    }
+    else{
+      return minvalue;
+    }
+}
