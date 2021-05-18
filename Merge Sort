@@ -1,0 +1,27 @@
+
+function mergeSort(A) {
+  var arrlen=A.length;
+  if(arrlen<2) return A;
+  var mid=Math.floor(arrlen/2);
+  //Split the array in the middle, and create two sub arrays
+  var left= A.slice(0, mid );
+  var right= A.slice(mid);
+//call the merge function that sorts two arrays into one merged array
+ return merge(mergeSort(left), mergeSort(right));
+
+}
+function merge(left, right){
+var A=[]
+//Checking if the two arrays contain any value
+  while(left.length && right.length){
+    //compare the first element of each array with each other,
+    //And push the smaller value into the main sorted array A, while removing it from the 
+    //subarray
+    if(left[0]<right[0]) A.push(left.shift());
+    else A.push(right.shift());
+  }
+
+ //Concatenate the sorted array with whatever values are remaining in the left subarray 
+ //and on the right subarray
+  return A.concat(left.slice()).concat(right.slice());
+}
