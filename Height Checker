@@ -1,0 +1,46 @@
+
+function heightChecker(heights) {
+  var arrlen = heights.length;
+
+  let Quicksort = A => {
+    var arrlen = A.length;
+    if (arrlen < 2) return A;
+    var mid = Math.floor(arrlen / 2);
+    var pivot = A[mid];
+    var left = [];
+    var right = [];
+    for (var i = 0; i < arrlen; i++) {
+      if (i !== mid) {
+        if (A[i] <= pivot) {
+          left.push(A[i]);
+        } else {
+          right.push(A[i]);
+        }
+      }
+    }
+
+    return [...Quicksort(left), pivot, ...Quicksort(right)];
+  };
+  var expected = Quicksort(heights);
+  var count = 0;
+  for (var i = 0; i < arrlen; i++) {
+    if (heights[i] !== expected[i]) count++;
+  }
+  return count;
+}
+
+
+
+
+// More efficient and clean solution soltion
+function heightChecker(heights) {
+  var arrlen = heights.length;
+
+
+  var expected =[...heights].sort((a,b)=> {return a-b});
+  var count = 0;
+  for (var i = 0; i < arrlen; i++) {
+    if (heights[i] !== expected[i]) count++;
+  }
+  return count;
+}
