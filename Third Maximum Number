@@ -1,0 +1,16 @@
+var thirdMax = function (nums) {
+  nums.sort((a, b) => {
+    return b - a;
+  });
+ if(nums.length<3){
+   return nums[0];
+ }
+  var count = 1;
+  for (var i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[i - 1]) {
+      ++count;
+      if (count === 3) return nums[i];
+    }
+  }
+  if (count < 3) return nums[0];
+};
