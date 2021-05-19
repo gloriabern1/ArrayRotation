@@ -1,0 +1,21 @@
+//This quick sort algorithm used the first element of the array as the pivot. 
+// This will cause the worst case scenerio time complexity to be O(n2).
+//Check out the optimized quick sort algorithm here https://github.com/gloriabern1/ArrayRotation/commit/b451b59b797c663caa77e03b5141e333aff66cfb
+
+function Quicksort(A) {
+  var arrlen = A.length;
+  if (arrlen < 2) return A;
+
+  var pivot = A[0];
+  var left = [];
+  var right = [];
+  for (var i = 1; i < arrlen; i++) {
+    if (A[i] <= pivot) {
+      left.push(A[i]);
+    } else {
+      right.push(A[i]);
+    }
+  }
+
+  return [...Quicksort(left), pivot, ...Quicksort(right)];
+}
