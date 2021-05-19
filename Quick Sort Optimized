@@ -1,0 +1,36 @@
+//This quicksort algorithm function take the pivot from the middle of the array, not the beginning or the end. 
+//This makes it more efficient and reduces its worst case time complexity to O(nlogn)
+
+function Quicksort(A) {
+  var arrlen = A.length;
+  if (arrlen < 2) return A;
+  
+//Getting the middle index of the array
+  var mid = Math.floor(arrlen / 2);
+  
+  //Using the value at the middle index as the pivot
+  var pivot = A[mid];
+  
+  //Left array, will conatin numbers less than the pivot
+  var left = [];
+  
+  //Right array will conatin numbers greater than the pivot
+  var right = [];
+  
+  for (var i = 0; i < arrlen; i++) {
+  //Checking if i is at the middle index of the array, so we can exclude it from being checked
+    if (i !== mid) {
+    //Checking if the value is less than or equat to pivot
+      if (A[i] <= pivot) {
+      //Pushing smaller values to the left array
+        left.push(A[i]);
+      } else {
+      //pushing larger values to the right array
+        right.push(A[i]);
+      }
+    }
+  }
+  
+//Spreading the values returned from the recursive call of the quicksort function
+  return [...Quicksort(left), pivot, ...Quicksort(right)];
+}
