@@ -1,0 +1,139 @@
+class Node {
+  constructor(val, next = null) {
+    this.val = val;
+    this.next = next;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  //insert first node
+  insertFirst(val) {
+    //We set the head to the new value and
+    //then set the next property of the new head to the previuos Node(old head)
+    this.head = new Node(val, this.head);
+    this.size++;
+  }
+
+  //insert at the last node
+  insertLast(val) {
+    //Check if list it empty to make it the first
+    if (!this.head) {
+      this.insertFirst(val);
+    } else {
+      let top = this.head;
+      //looping till it get to where next is null
+      while (top.next) {
+        top = top.next;
+      }
+      //when top.next is null
+      top.next = new Node(val);
+      this.size++;
+    }
+  }
+
+  //Insert at an index
+  insertAt(val, index) {
+    //
+    if (index > 0 && index > this.size) {
+      return;
+    }
+    //if first index
+    if (index === 0) {
+      this.insertFirst(val);
+      return;
+    }
+    //set the current node to the first node(head)
+    let current = this.head;
+    let previous;
+    let count = 0;
+    //create the node to be inserted
+    let node = new Node(val);
+    //loop through the linkedlist
+    //checking when the index greater than count
+    while (count < index) {
+      //set node before the index to previous
+      previous = current;
+      //set node after the index to current
+      current = current.next;
+      count++;
+    }
+    //set the next node of the previous node to the new node
+    previous.next = node;
+    //set the next node of the new node to the current node
+    node.next = current;
+    this.size++;
+  }
+
+  //Get a node at an index
+  getAt(index) {
+    let current = this.head;
+    let count = 0;
+    while (current) {
+      if (count === index) {
+        console.log(current.val);
+        break;
+      }
+      count++;
+      current = current.next;
+    }
+    return null;
+  }
+
+  //remove a node at an index
+  removeAT(index) {
+    if (index > 0 && index > this.size) {
+      return;
+    }
+
+    let current = this.head;
+    let previous;
+    let count=0;
+  //Remove first
+  if(index===0){
+    this.head=current.next;
+  }
+  else{
+    while(count<index){
+     previous=current;
+     current=current.next;
+     count++;
+    }
+
+    previous.next= current.next;
+   
+  }
+   this.size--;
+  }
+
+  clearList(){
+    this.head= null;
+    this.size=0;
+  }
+
+  //print LinkedList
+  printListData() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
+}
+
+const ll = new LinkedList();
+ll.insertFirst(100);
+ll.insertFirst(200);
+ll.insertFirst(300);
+ll.insertLast(400);
+ll.clearList();
+//ll.insertAt(500, 8);
+//ll.printListData();
+//ll.getAt(10);
+ll.removeAT(3);
+ll.printListData();
+console.log(ll);
