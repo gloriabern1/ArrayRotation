@@ -1,0 +1,27 @@
+var hasCycle = function(head) {
+    if(!head) return false;
+    
+    //Set the slow pointer to the head
+    var slowpointer=head;
+    var pos=0;
+    //Set the fast pointer to the head.next
+    var fastpointer= head.next
+    //Check if fastpointer and fastpointer.next is not equal to null
+    while(fastpointer && fastpointer.next){
+    //at the point where both fastpointer and slowpointer at the same node
+        if(fastpointer===slowpointer){
+            return true;
+        }
+        //move fastpointer two places forward
+        fastpointer= fastpointer.next.next;
+        //Move slow pointer one place forward
+        slowpointer= slowpointer.next;
+        //increment pos to know the index of the list where the collision occurs for the slowpointer
+        pos++;
+        
+    }
+    pos=-1;
+    //if cycle is not detected
+    return false;
+    
+};
