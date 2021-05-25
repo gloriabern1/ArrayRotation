@@ -1,0 +1,53 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var detectCycle = function(head) {
+    if(!head) return null;
+    //pointer that moves one step forward
+    var slowpointer=head;
+    var pos=0;
+    //pointer that moves two steps forward
+    var fastpointer= head;
+    //Check to know it is a cyclic linked list
+    var cyclenode=false;
+    //Checking is fastpointer or fastpointer.next is null
+    while(fastpointer && fastpointer.next){
+    //set to the next value
+     slowpointer= slowpointer.next;  
+     //set to the node two steps forward
+     fastpointer= fastpointer.next.next;
+     //if both pointers are on the same node; then its a cyclic linked list
+        if(fastpointer ===slowpointer){
+        //set this and break out of the loop
+            cyclenode=true;
+            break;
+        }
+       
+    }
+    //check if its a cyclic linked list
+    if(cyclenode){
+    //set the slowpointer back to the head node. So we can calculate the exact node where the cycle begins. from the head node
+         slowpointer=head;
+            //check until slow pointer and fastpointer are on the same node
+        while(slowpointer !== fastpointer){
+             slowpointer=slowpointer.next;
+            fastpointer=fastpointer.next;
+        }
+      //return slowpointer
+    return slowpointer;
+    }
+    
+    return null;
+    
+
+    
+};
