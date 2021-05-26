@@ -1,0 +1,42 @@
+This problem is supposed to return the node at the intersection
+//This solved by traversing across both linked list using two pointers, 
+and setting the pointer for each linked list to the head of the other linked list, 
+when it gets to the end of its own linkedlist
+
+
+var getIntersectionNode = function(headA, headB) {
+    
+    if(!headA || !headB) return null;
+    //pointer for first linked list
+    var firstlist=headA;
+    //pointer for second linked list
+    var seclist=headB;
+    //variable to check is the first pointer has been set to the head of the second linked list
+    var firstroundcheck=false;
+    //variable to check is the second pointer has been set to the head of the first linked list
+    var secroundcheck= false;
+  
+    while(firstlist && seclist){
+    //checking if both pointers are on the same node
+        if(firstlist===seclist) return firstlist;
+        //traversing through the linked lists
+        firstlist=firstlist.next;
+        seclist= seclist.next;
+        
+        //Checking if the first pointer has been set to the head of the second linked list
+        //After traversing through all the values of the first linked list
+        if(!firstroundcheck){
+                 if(firstlist===null) 
+        {firstlist=headB; firstroundcheck=true;}
+        }
+        //Checking if the second pointer has been set to the head of the first linked list
+         //After traversing through all the values of the second linked list
+        if(!secroundcheck){
+        
+             if(seclist===null){ seclist= headA; secroundcheck=true;}
+        }
+   
+       
+    }
+    return null;
+};
