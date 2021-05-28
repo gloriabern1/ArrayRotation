@@ -1,0 +1,20 @@
+function Checkoccurennce(A, val){
+  var arrlen= A.length;
+  var count=0;
+  for(var i=0; i<arrlen; i++){
+    if(A[i]===val){
+      count++;
+    }
+    if(Array.isArray(A[i])){
+      count+=Checkoccurennce(A[i], val);
+    }
+  }
+  return count;
+}
+const arr = [
+   "apple",
+   ["banana", "strawberry","dsffsd", "apple"],
+   "banana",
+   ["sdfdsf","apple",["apple",["nonapple", "apple",["apple"]]]]
+   ,"apple"];
+console.log(Checkoccurennce(arr, "apple"));
