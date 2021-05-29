@@ -1,0 +1,23 @@
+//This solution uses Kadane's algorithm
+
+
+var maxSubArray = function(nums) {
+    var arrlen= nums.length;
+    //Setting the first element to  be the maximum sum
+    var maxsum=nums[0];
+    var currentsum=0;
+    for(var i=0; i<arrlen; i++){
+    //Adding the elements of the array to the current sum
+     currentsum+=nums[i];
+     //checking if the current sum is less than the current element
+     //if yes, then set currentsum to be the current element, i.e discarding all other elements before the current element
+     if(currentsum<nums[i]) currentsum=nums[i];
+   
+   //Checking if the currentsum is greater than the maximum sum
+   //if yes, set maximumsum to be the current sum
+     if(currentsum>maxsum) maxsum=currentsum;
+    }
+    return maxsum;
+};
+
+console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))
