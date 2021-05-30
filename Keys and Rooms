@@ -1,0 +1,36 @@
+
+var canVisitAllRooms = function (rooms) {
+//Create a new map
+  let hash = new Map();
+  //Create a new queue array
+  var queue = [];
+  //push the first index of the array into the queue array
+  queue.push(0);
+  //Checking if the queue array still have elements
+  while (queue.length) {
+  //getting the last element in the queue array
+    var item = queue[queue.length - 1];
+    //Check if the map already contains the element
+    if (!hash.has(item)) {
+    //adding the element to the map, id doesnt already exist
+      hash.set(item, item);
+      //Get vales(array) of the element in the main array that has not been inserted into the map
+      var newroom = [];
+      for (var ele of rooms[item]) {
+      //check if any of the value has been inserted in the map
+        if (!hash.has(ele)) {
+          newroom.push(ele);
+        }
+      }
+      //Add the values from the element to the front of all the elements in the queue
+      queue = newroom.reverse().concat(queue);
+     
+    }
+    //Remove the last element in the queue
+ queue.pop();
+   
+  }
+//Check if the size of the map is equal to the length of the main room array
+  if(hash.size===rooms.length) return true;
+  return false;
+};
