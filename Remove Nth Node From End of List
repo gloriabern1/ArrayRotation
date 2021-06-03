@@ -1,0 +1,36 @@
+class Node{
+    constructor(val, next) {
+    
+      this.val = (val===undefined ? 0 : val)
+      this.next = (next===undefined ? null : next)
+    }
+ }
+var removeNthFromEnd = function(head, n) {
+    
+    if(!head) return null;
+    //use the fastpointer
+    var fastpointer=head;
+    //the dummy node, which is pointing to the head node
+    var dummynode= new Node(0,head);
+    //the slow pointer that stay behind the node to be removed
+    var slowpointer= dummynode;
+    //Setting the fast counter to one, because the fast pointer is already set to the head
+    var Fastcounter=1;
+     while(fastpointer.next){
+         Fastcounter++;
+         //Checking when fastpointer is greater than the nth node from the front
+         if(Fastcounter>n){
+         //start moving the slow pointer one step forward , when the fastpointer has passed the nth node
+             slowpointer= slowpointer.next;
+         }
+         fastpointer=fastpointer.next
+     }
+ 
+ //checking if slowpointer.next is not null, so we can move the next value
+    if(slowpointer.next)
+        slowpointer.next= slowpointer.next.next;
+ 
+    //Return the dummy.next(which is the head node)
+    return dummynode.next;
+   
+};
