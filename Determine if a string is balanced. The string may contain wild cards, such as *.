@@ -1,0 +1,85 @@
+const balanced = string => {
+  if (string === '') return true;
+  var strarr = [...string];
+  var map = new Map();
+  var largest = 0;
+  for (var item of strarr) {
+    if (largest === 0) largest = 1;
+    if (map.has(item)) {
+      map.set(item, map.get(item) + 1);
+      if (item !== '*' && largest < map.get(item)) {
+        largest = map.get(item);
+      }
+    } else {
+      map.set(item, 1);
+    }
+  }
+  var firstitem = largest;
+  for (let [key, pair] of map) {
+    if (pair !== firstitem && key !== '*') {
+      if (map.has('*')) {
+        var rnum = firstitem - pair;
+        if (map.get('*') >= rnum) {
+          map.set('*', map.get('*') - rnum);
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+  }
+
+  if (!map.has('*')) {
+    return true;
+  }
+  console.log('size' + (map.size-1));
+   console.log('larg' + (largest));
+  var wildnum = map.get('*');
+  console.log('*' + wildnum);
+
+  if (map.has('*')) {
+    if (map.size-1 > 51 &&(wildnum%52===0)) {
+      console.log("gi")
+      return true;
+    }
+   else if ((wildnum === largest || largest===1) && !(map.size-1 > 51)) {
+      console.log("fi")
+      return true;
+    }
+     else if (
+     ( wildnum % (map.size - 1) === 0 ||
+      wildnum % (map.size - 1) ===
+        largest + Math.floor(wildnum / (map.size - 1))) && map.size - 1 < 52)
+    {
+      console.log("ki");
+      return true;
+    } else if (map.size <= 2) {
+     // console.log("mi");
+      return true;
+    }
+  }
+  
+  return false;
+};
+
+console.log(balanced('aabbc****')); //true
+ console.log(balanced("ab*"));//true
+  console.log(balanced("a**"));//true
+  console.log(balanced("a"));//true
+  console.log(balanced("ab"));//true
+  console.log(balanced("abc"));//true
+  console.log(balanced("abcb"));//false
+  console.log(balanced("Aaa"));//false
+  console.log(balanced("abcb*"));//false
+  console.log(balanced("abcb**"));//true
+  console.log(balanced("***********"));//true
+  console.log(balanced("a*aabc*****")); //false
+console.log(balanced('F*O**H*VDB*GT*L***')); //true
+console.log(balanced('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ*')); //false
+console.log(balanced('*KXIUVMOAN')); //true
+console.log(balanced('*C***F***R*US*R**D***YS***H')); //true
+console.log(balanced('HV**Q*OSJ*')); //true
+console.log(balanced('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ****************************************************')); //true
+console.log(balanced('*C***S*L**L****S**QN*')) //true
+console.log(balanced('V*DX**CQ*NN*LYLP**G**AFGT*Z*ZO**VJHJ**B*')) //true
