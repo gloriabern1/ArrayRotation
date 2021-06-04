@@ -1,0 +1,19 @@
+//This uses the leetcode explanation of how to reverse a linked list.
+
+var reverseList = function(head) {
+    if(!head) return null;
+    
+    var pointer= head;
+    while(pointer.next){
+    //Get the current head of the linked list
+        let prevhead=head;
+        //Set the new head of the linkedlist to the next value of the pointer
+        head=pointer.next;
+        //Set the new next value of the pointer, by removing the current next value
+        pointer.next= pointer.next.next;
+        //Set the next value of the newhead to the previos head
+        head.next= prevhead;
+    }
+    return head;
+    
+};
