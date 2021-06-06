@@ -1,0 +1,69 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+var removeElements = function(head, val) {
+    
+    if(!head) return null;
+    //create a dummy head node
+    var prev= new ListNode(0, head);
+    //get the original head
+    let currentpointer= head;
+    //While the node is valid
+    while(currentpointer){
+    //Check if the current pointer had the value
+        if(currentpointer.val===val){
+        //Check if the current pointer is the current head node
+            if(currentpointer===head){
+            //if the currrent pointer is the current head node. Set the new head node to the current.next
+                 head=currentpointer.next;
+            }
+            else{
+            //if it isnot the current head node.
+            //Set the previous node.next to the current node.next
+            //i.e removing the current node from the linked list
+                prev.next=currentpointer.next;
+            }
+             
+        }
+        else{
+        //set the previous node to the current node, if the current node does not have the value
+            prev=currentpointer;
+        }
+        
+        //travers the current node to the next node in the linked list
+        currentpointer=currentpointer.next;
+    }
+    return head;
+};
+
+//Another solution
+
+var removeElements = function(head, val) {
+    
+    if(!head) return null;
+    var prev= new ListNode(0, head);
+    while(head && head.val===val){
+       head= head.next;
+    }
+    let currentnode= head;
+    
+    while(currentnode && currentnode.next){
+        if(currentnode.next.val===val){
+            currentnode.next= currentnode.next.next;
+        }
+        else{
+            currentnode= currentnode.next;
+        }
+    }
+    
+    return head;
+};
