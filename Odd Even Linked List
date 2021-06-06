@@ -1,0 +1,39 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var oddEvenList = function(head) {
+    if(!head) return null;
+    //starting point of the odd nodes
+    var oddnode=head;
+    //current node of the even nodes
+    let evennode=head.next;
+    //Starting point of the even nodes
+        let startevennode=head.next;
+    while(evennode && evennode.next){
+    //setting the next node in the odd nodes chain to the next value of the current even node
+            oddnode.next=evennode.next;
+            //setting the next value of the current even node, by removing the odd node next to it
+            evennode.next=evennode.next.next;
+            //Checking if the next node of the current odd node in the odd node chain is 
+            //equal to the head of the evennode chain
+            if(oddnode.next !== startevennode){
+            //if its note qual to the even node head.
+            //then set the current odd node to the next node
+                oddnode=oddnode.next;
+                //And set the next node of the current odd node to the head of the even node chain
+                 oddnode.next=startevennode;
+            }
+            //increment the current even node
+            evennode=evennode.next;
+    }
+    return head;
+    
+};
