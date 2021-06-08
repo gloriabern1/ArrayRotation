@@ -1,3 +1,26 @@
+//clean solution
+function solution(A, p){
+  var arrlen=A.length;
+  var myset= new Set();
+  
+  for(var i=0; i<arrlen; i++){
+    //Checks if the current element is less than the position
+    if(A[i]<p){
+    //Then add it to the set
+      myset.add(A[i])
+    }// Checking the element is equal to the position
+    else if(A[i]===p){
+    //Checking if the set is complete with all the numbers that come before the positino number
+    //then return the index
+      if(myset.size===p-1) return i;
+    }
+
+  }
+  return -1;
+}
+console.log(solution([1,3,1,4,2,3,5,4],5))
+
+
 
 function solution(position,myarray){
 
