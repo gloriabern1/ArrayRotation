@@ -1,0 +1,8 @@
+//Helps with understanding recurrsion
+function CountDigits(n){
+  console.log(n);
+   // let count=0;
+    if(n===0) return 0;
+    return 1+ CountDigits(Math.floor(n/10));
+}
+console.log(CountDigits(100));
