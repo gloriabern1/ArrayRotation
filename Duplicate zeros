@@ -1,3 +1,18 @@
+//Cleaner and better code
+
+var duplicateZeros = function(arr) {
+  const fixedlen=arr.length;
+  for(var i =0; i<fixedlen; i++){
+    if(arr[i]===0){
+      arr.splice(i,1,0,0);
+      i+=1;
+    }
+  }
+    arr.length=fixedlen;
+    
+  
+}
+
 var duplicateZeros = function (arr) {
   let arrlen = arr.length;
   let elc = 0;
