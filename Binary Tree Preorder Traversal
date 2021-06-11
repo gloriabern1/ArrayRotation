@@ -1,0 +1,35 @@
+//Iterative solution
+
+var preorderTraversal = function(root) {
+let result=[];
+    let stack=[root];
+    
+    while(stack.length > 0){
+      var current= stack.pop();
+        if(current != null){
+            result.push(current.val);
+        if(current.right!= null){
+            stack.push(current.right);
+        }
+        if(current.left != null){
+            stack.push(current.left);
+        }
+        }
+        
+        
+    }
+    return result;
+  
+  
+  //Recursive Solution
+  var preorderTraversal = function(root, result=[]) {
+    
+   if(!root) return result;
+     
+    result.push(root.val);
+    preorderTraversal(root.left, result);
+    preorderTraversal(root.right, result);
+    return result;
+  
+
+}
