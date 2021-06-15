@@ -1,0 +1,52 @@
+
+//This solution uses two pointers. A fast pointer and a slow pointer. the fastpointer moves twice as fast as the slow pointer.
+//This ensures that when the fastpointer is at the end of the linked list. the slow pointer is at the middle of the linked list.
+
+var isPalindrome = function(head) {
+    if(!head) return true;
+    let slowpointer=head;
+    let fastpointer=head;
+    //Checking the fstpointer is not at the end of the linked list
+    while(fastpointer && fastpointer.next){
+    //move the slow pointer by one step
+        slowpointer=slowpointer.next;
+        //move the fastpointer by two steps
+        fastpointer= fastpointer.next.next;
+    }
+    //Set the fastpointer to the head node
+    //Indicating the start of the first half of the linked list
+    fastpointer=head;
+    
+    //since the slow pointer is at the middle of the linked list. 
+    //revers the secondhalf of the linked list, which start from the slowpointer
+    slowpointer=reverseList(slowpointer);
+    
+    //Checking if slow pointer is not null
+    //I.e looping through the secondhalf of the linked list
+    while(slowpointer){
+    
+    //comparing the values of the second half of the linked list to the values of the first half of the linked list
+        if(fastpointer.val != slowpointer.val) return false;
+        //traversing the two linked lists
+        slowpointer= slowpointer.next;
+        fastpointer=fastpointer.next;
+    }
+    //return true, if the linked list is traversed successfully
+    return true;
+    
+    
+};
+//Fucntion to reverse the linked list
+var reverseList = function(head) {
+    if(!head) return null;
+    
+    var pointer= head;
+    while(pointer.next){
+        let prevhead=head;
+        head=pointer.next;
+        pointer.next= pointer.next.next;
+        head.next= prevhead;
+    }
+    return head;
+    
+};
