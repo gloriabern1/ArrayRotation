@@ -1,0 +1,45 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+
+var mergeTwoLists = function(l1, l2) {
+//checking if one of the list is empty and returning the non empty list
+    if(!l1 && l2) return l2;
+    if(!l2 && l1) return l1;
+    //Checking if both lists are empty
+      if(!l2 && !l1) return null;
+    
+    //create a new list, which will be sorted 
+    var sortedlist = new ListNode(0);
+    //pointer for first list
+    var firstpointer=l1;
+    //pointer for second list
+    var secondpointer=l2;
+    //pointer for new sorted list
+    var stpointer=sortedlist;
+    //Checking if any of the lists is empty
+    while(firstpointer && secondpointer){
+    //Check for the smaller value at each of the pointers
+        if(firstpointer.val<=secondpointer.val){
+            stpointer.next=firstpointer;
+            firstpointer=firstpointer.next;
+        }
+        else{
+            stpointer.next=secondpointer;
+            secondpointer=secondpointer.next;
+        }
+        //traversing the sorted list
+        stpointer=stpointer.next;
+    }
+    //adding remaining nodes in first linked list to the sorted list
+    if(firstpointer) stpointer.next=firstpointer;
+    //adding remaining nodes in second linked list to the sorted list 
+   if(secondpointer) stpointer.next=secondpointer;
+   
+   //return the sorted list excluding the head(dummy node)
+    return sortedlist.next;
+};
