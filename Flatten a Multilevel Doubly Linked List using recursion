@@ -1,0 +1,61 @@
+/**
+ * // Definition for a Node.
+ * function Node(val,prev,next,child) {
+ *    this.val = val;
+ *    this.prev = prev;
+ *    this.next = next;
+ *    this.child = child;
+ * };
+ */
+
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var flatten = function(head) {
+    if(!head) return null;
+    //This is the flattened list with the dummy node
+    var flatlist= new Node(0);
+    //pointer for the head node
+    var pointer= head;
+    //pointer for the flattened list
+     var flatp= flatlist;
+    
+    while(pointer){
+    //Getting the val of the current node in the main list
+        var Nextnode= new Node(pointer.val);
+        //setting its preious value
+        Nextnode.prev=flatp;
+        //Setting the next value of the flattened list pointer to the newly created node
+        flatp.next = Nextnode;
+        //setting the current pointer of the flattened list to the next node(just created)
+        flatp=flatp.next;
+        //Checking if the current pointer has a child list
+         if(pointer.child != null){
+         //recursive cal of the flatten function for the child list
+             var output= flatten(pointer.child);
+             //pointer for the flattened list
+             var outp= output;
+             //traversing the flattend list to the end 
+             //So we can set the main pointer(flatp) of the main flattened list
+             while(outp.next){
+                 outp=outp.next
+             }
+             //Setting the prev of the flattend list to the current pointer of the main flattened list
+             output.prev=flatp;
+             //setting the next of the flattened list pointer(flatp) to the new child flattened list returned
+          flatp.next=  output;
+          //setting the main pointer(flatp) of the main flattened list to the last node of the returned flattend list
+            flatp=outp;
+        }
+        //traversing the main head list
+        pointer= pointer.next;
+    }
+    var newhead=flatlist.next;
+    //Setting the previous of the main flattened list to null
+    //Removing the dummy node
+    newhead.prev=null;
+    
+    return newhead;
+    
+};
