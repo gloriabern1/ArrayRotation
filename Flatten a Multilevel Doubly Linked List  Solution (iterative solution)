@@ -1,0 +1,50 @@
+/**
+ * // Definition for a Node.
+ * function Node(val,prev,next,child) {
+ *    this.val = val;
+ *    this.prev = prev;
+ *    this.next = next;
+ *    this.child = child;
+ * };
+ */
+
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var flatten = function(head) {
+    if(!head) return null;
+    
+    var pointer= head;
+    var stack=[];
+    
+    while(pointer.next){
+    //check if the current node has a child list
+       if(pointer.child){
+       //push the next set of node on the main list into the stack array
+           stack.push(pointer.next);
+           
+      var child=pointer.child;
+      //set the next node of the pointer to the child node
+           pointer.next=child;
+           //set the prev of the child list to the pointer
+           child.prev=pointer;
+           
+       }
+        //Checking if the pointer is at the end of the main list
+        //checking if the stack array is empty
+       if(pointer.next.next==null && stack.length>0){
+       //get the last item in the stack array
+            var nxn=stack.pop();
+            //set the prev of the item from the stack array
+            nxn.prev=pointer.next;
+            //add the item from the stack array to the end of the main list
+            pointer.next.next=nxn;
+            
+        }
+                
+        pointer=pointer.next;
+    }
+    return head;
+    
+};
