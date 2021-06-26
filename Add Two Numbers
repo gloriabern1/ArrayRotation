@@ -1,0 +1,58 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+    //checking for edge cases
+  if(!l1 && l2) return l2;
+    if(l1 && !l2) return l1;
+    if(!l1 && !l2) return null;
+    //set the pointer for the first list
+    var l1p=l1;
+    //set the pointer for the second linked list
+    var l2p=l2;
+    //create a new summed linked list
+    var sumlist= new ListNode(0);
+    //set pointer for the summed linked list
+    var sump= sumlist;
+    //this is the carried value from each sum
+    var carriedval = 0;
+    //Checking the length of the longest linked list or
+    //if the carried value after the last sum is not 0
+    while(l1p || l2p || carriedval!==0){
+    //checking is any of the node on either of the list is null
+        var l1val = l1p?.val ?? 0;
+        var l2val = l2p?.val ?? 0;
+        
+        //sum the values on the node of the two list and the carried value of any
+        var sum= l1val + l2val + carriedval;
+        //reset the carried value
+        carriedval=0;
+        if(sum>=10){
+        //getting te carried value 
+            carriedval= Math.floor(sum/10);
+            //getting the remaining value 
+            sum=sum%10;
+         
+        }
+        //create a new node with the sum
+        var addnode = new ListNode(sum);
+        //add the new node to the summed list
+        sump.next=addnode;
+        //traverse all the linked lists one step forward
+        sump=sump.next;
+        l1p=l1p?.next;
+        l2p=l2p?.next;
+        
+    }
+   
+    return sumlist.next;
+};
