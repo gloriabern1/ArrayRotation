@@ -1,0 +1,50 @@
+//The question wants you to create a clone/copy of the linked list with the random pointers of each noed in the old linked list
+
+/**
+ * // Definition for a Node.
+ * function Node(val, next, random) {
+ *    this.val = val;
+ *    this.next = next;
+ *    this.random = random;
+ * };
+ */
+
+/**
+ * @param {Node} head
+ * @return {Node}
+ */
+var copyRandomList = function(head) {
+   
+    if(!head) return null;
+    var hp= head;
+    //create a map of the old nodes to the new nodes
+    var randmap=new Map();
+    //This is done for cases where the null is searched in the hash map
+    randmap.set(null,null);
+    //this first loop is to create new nodes from the val of the old nodes in the old linked list
+    //Then map the old nodes to thier quivalent new nodes
+    while(hp){
+        var nextnode=new Node(hp.val);
+        //map the old node to its equivalent new node
+        randmap.set(hp, nextnode);
+        hp=hp.next;
+        
+    }
+    /reset the pointer to the head od the old linked list
+   hp= head;
+        //This second loop is to connect the new nodes created,
+        
+    while(hp){
+    //get the equivalent new nodes of the current old node
+        var newnode= randmap.get(hp);
+        //get the equivalent new node of next node to the current new node
+       newnode.next=randmap.get(hp?.next);
+       //get the equivakent new node of the random node to the current new node
+        newnode.random=randmap.get(hp.random)
+        
+        hp=hp.next;
+    }
+    
+    //get the equivalent new head node of the old head node
+    return randmap.get(head);
+};
