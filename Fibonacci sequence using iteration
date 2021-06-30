@@ -1,0 +1,16 @@
+function fibonacci(num){
+
+var first=0;
+var second=1;
+var fiboarray=[];
+while(num!==0){
+fiboarray.push(second);
+  var temp=second;
+  second=first+second;
+ first=temp;
+  num--;
+}
+console.log(fiboarray);
+return first;
+}
+console.log(fibonacci(6))
