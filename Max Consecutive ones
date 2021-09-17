@@ -1,0 +1,34 @@
+var findMaxConsecutiveOnes = function(nums) {
+    
+    const arrlen=nums.length;
+    var temp1=0;
+    var temp2=0;
+    for(let i=0; i<arrlen; i++){
+       
+        if(nums[i]===1){
+            temp1++;
+        }
+        else{
+            if(temp1>temp2){
+                temp2=temp1;
+            }
+            
+            temp1=0;
+        }
+       
+        
+    }
+      if(temp1>temp2){
+                temp2=temp1;
+            }
+    return temp2;
+};
+
+
+
+//Another Solution
+let findMaxConsecutiveOnes = (A, ans = 0) => {
+    for (let i = 0, cur = 0; i < A.length; ++i)
+        ans = Math.max(ans, cur = A[i] == 0 ? 0 : cur + 1);
+    return ans;
+};
