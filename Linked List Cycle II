@@ -26,6 +26,7 @@ var detectCycle = function(head) {
      //set to the node two steps forward
      fastpointer= fastpointer.next.next;
      //if both pointers are on the same node; then its a cyclic linked list
+     //This node may not be the start of the cycle
         if(fastpointer ===slowpointer){
         //set this and break out of the loop
             cyclenode=true;
