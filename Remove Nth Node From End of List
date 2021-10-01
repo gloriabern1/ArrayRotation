@@ -13,6 +13,7 @@ var removeNthFromEnd = function(head, n) {
     //the dummy node, which is pointing to the head node
     var dummynode= new Node(0,head);
     //the slow pointer that stay behind the node to be removed
+    
     var slowpointer= dummynode;
     //Setting the fast counter to one, because the fast pointer is already set to the head
     var Fastcounter=1;
