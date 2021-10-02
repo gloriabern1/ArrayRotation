@@ -3,6 +3,7 @@
 var reverseList = function(head) {
     if(!head) return null;
     
+    //This pointer keeps track of the original head. As we travers through the linked list
     var pointer= head;
     while(pointer.next){
     //Get the current head of the linked list
