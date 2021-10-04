@@ -1,0 +1,50 @@
+function maxqaulit(packets, chan){
+  var sta= packets.sort((a,b)=> a-b);
+  var arrsu= packets.reduce((prev, curr)=> prev+curr);
+  var michasi= Math.ceil(arrsu/chan);
+  var i =packets.length;
+
+  var sizch=sta[i-1];
+  var chanara=[];
+  var sigar=[];
+  var channelsiz=0;
+  console.log(michasi);
+  console.log(sta);
+  while(i>0){
+    console.log(sizch);
+          if(sizch>michasi){
+            chanara.push(sigar);
+            sigar=[];
+            sizch=0;
+            ++channelsiz;
+            if(chan-channelsiz===1){
+              sigar=sta.slice(0,i);
+              chanara.push(sigar);
+              break;
+            }
+
+          }
+          else{
+            sigar.push(sta[i-1]);
+            sizch+= sta[i-1];
+          }
+          --i;
+  }
+
+            console.log(chanara);
+
+     var median=0;
+     while (chan>0){
+       var currsigarr= chanara[chan-1];
+       const mid=Math.floor(currsigarr.length/2);
+       median+=currsigarr.length %2 !==0? currsigarr[mid]:
+       (currsigarr[mid-1]+ currsigarr[mid])/2;
+
+       --chan;
+
+      
+     }
+  return median;
+}
+
+console.log(maxqaulit([2,2,1,5,3], 2));
