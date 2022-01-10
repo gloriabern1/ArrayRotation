@@ -1,0 +1,30 @@
+The two arrays nums1 and nums2 are sorted in ascending order 
+and the lenght is nums1 array is (m+n) where m is the length of nums1 array
+without nums2
+
+function getsort (nums1, m, nums2, n){
+//Get the 0 indexed length of nums1 array
+var a1= m-1;
+//Get the 0 indexed length of nums2 array
+var a2= n-1;
+//Get the 0 indexed length of the nums1 joined array
+var arrlen= nums1.length-1;
+//We are going to be putting the sorted element from the end of the nums1 arrays
+//Starting with the highest element
+for(var i=arrlen; i >=0; i--){
+//check if the last value in nums1 is greater or equal to the last value in nums2
+//Set the last index of nums1
+  if(a1>=0 && nums1[a1] >=nums2[a2]){
+    nums1[i]=nums1[a1];
+    --a1;
+  }
+  else if(a2>=0){
+    nums1[i]=nums2[a2];
+    --a2;
+  }
+}
+
+return nums1;
+}
+
+console.log(getsort([1,2,3,0,0,0], 3, [2,5,6], 3));
