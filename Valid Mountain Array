@@ -1,3 +1,36 @@
+
+Let's walk up from left to right until we can't: that has to be the peak. We should ensure the peak
+is not the first or last element. Then, we walk down. If we reach the end, the array is valid, otherwise its not.
+function validmountainarray(arr){
+
+//Get length of array
+  var arrlen= arr.length;
+  //Count starts from 0
+var i=0;
+//start checking elements to get the peak. i.e the heightest value in a valid mountain array
+while(i+1<arrlen && arr[i+1]>arr[i]){
+  i++;
+}
+
+//Once you get to the peak.
+//Check if that it is not the first or lasr element in the array 
+if(i===0 || i===arrlen-1){
+  return false;
+}
+
+//After ensuring it is not the firat or last element in the array
+//Then we can start decending from the peak to the end of the array
+while(i+1<arrlen && arr[i+1]<arr[i]){
+  i++
+}
+
+//Check that the last element for a valid descent is the last element of the array
+return i===arrlen-1;
+
+}
+
+
+//Longer answer
 var validMountainArray = function(arr) {
  
   var malent= arr.length;
