@@ -1,3 +1,27 @@
+
+//Approach 1
+var replaceElements = function(arr) {
+var len= arr.length;
+var max= arr[len-1];
+arr[len-1]=-1;
+    
+if(len<2){
+    return arr;
+}
+
+for(var i=len-2; i>=0; i--){
+  var el= arr[i];
+  max= max > arr[i+1]? max : arr[i+1];
+ 
+ arr[i]=max;
+ max= max > el? max : el;
+ 
+}
+ 
+return arr;
+};
+
+//Approach 2
 var replaceElements = function(arr) {
     let max=0;
     let arrlen= arr.length;
