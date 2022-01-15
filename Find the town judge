@@ -1,0 +1,32 @@
+public class Solution {
+    public int FindJudge(int n, int[][] trust) {
+           var arrlen= trust.Length/2;
+		//Console.WriteLine(trust.Length);
+		Dictionary<int, int> trustcount= new Dictionary<int, int>();
+		var Nsum= 0;
+		
+		for(int i=0; i<arrlen; i++)
+		{
+			if(trustcount.ContainsKey(trust[i,1])){
+				++trustcount[trust[i,1]];
+				//peoplearra[i]=trust[i,0];
+				Nsum= trust[i,0]+ Nsum;
+			}
+			else{
+				trustcount.Add(trust[i,1], 1);
+				//peoplearra[i]=trust[i,0];
+				Nsum= trust[i,0]+ Nsum;
+			}
+		}
+		
+		var totalsum= n*((n+1)/2);
+	var expectedouput= totalsum-Nsum;
+		var max = trustcount.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+		if(max!=expectedouput){
+			return -1;
+		}
+		else{
+			return max;
+		}
+    }
+}
