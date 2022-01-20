@@ -1,0 +1,45 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Hello World");
+		int[] arr= {1,0,2,3,0,4,5,0};
+		DuplicateZeros(arr);
+	}
+	 public static void DuplicateZeros(int[] arr) {
+        
+		var arrlen= arr.Length;
+		 Console.WriteLine(arrlen);
+	    var newlen=0;
+			int i=0;
+			while(i<arrlen && newlen<arrlen){
+				if(arr[i]==0){
+					newlen+=2;
+				}
+				else{
+					newlen++;
+				}
+				i++;
+			}
+		var j=1;
+		 Console.WriteLine(i);
+		 Console.WriteLine(newlen);
+		while(i>=0){
+			Console.WriteLine(j);
+
+			if(arr[i-1]==0){
+				arr[arrlen-j]=arr[i-1];
+				j++;
+			}
+			i--;
+			j++;
+		}
+		Console.WriteLine(arr);
+    }
+}
+
+public class Solution {
+   
+}
