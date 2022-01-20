@@ -26,12 +26,16 @@ public class Program
 		var j=1;
 		 Console.WriteLine(i);
 		 Console.WriteLine(newlen);
-		while(i>=0){
+		while(i>0){
 			Console.WriteLine(j);
 
 			if(arr[i-1]==0){
 				arr[arrlen-j]=arr[i-1];
 				j++;
+				arr[arrlen-j]=arr[i-1];
+			}
+			else{
+				arr[arrlen-j]=arr[i-1];
 			}
 			i--;
 			j++;
