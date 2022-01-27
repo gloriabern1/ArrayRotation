@@ -1,0 +1,62 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+class Solution
+{
+    /// <summary>
+    /// Returns highest sum less than k.
+    /// </summary>
+    /// <param name="a">List of integers</param>
+    /// <param name="k">Upper bound for sum of two numbers in a</param>
+    /// <returns>Highest sum less than k</returns>
+    public static int TwoSumLessThan(int[] a, int k)
+    {
+		
+		var arrlen= a.Length;
+		int[] lessarr= new int[arrlen-1];
+		var j=0;
+		for(int i=0; i<arrlen; i++){
+			var item= a[i];
+			if(item<k)
+			{
+				lessarr[j]=item;
+				j++;
+			}
+		}
+		var newlen= lessarr.Length;
+		lessarr.OrderBy(x=>x);
+		
+		var tempk= 0;
+		for(int l=0; l<newlen; l++){
+			var additme=(lessarr[l]+ lessarr[newlen-(l+1)]);
+			if(additme < k)
+			{
+				if(tempk<additme)
+				{
+					Console.WriteLine("hi");
+					tempk=additme;
+				}
+			}
+			{
+				if(tempk==0){
+					tempk=-1;
+				}
+				
+			}
+		}
+        var result = tempk;
+        return result;
+    }
+}
+
+public class TwoSumLessThan
+{
+    public static void Main(string[] args)
+    {
+        int [] nums = new int[] { 34, 23, 1, 24, 75, 33, 54, 8 };
+        int k = 60;
+        Console.WriteLine(Solution.TwoSumLessThan(nums, k));
+    }
+}
