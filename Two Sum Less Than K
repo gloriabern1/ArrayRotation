@@ -15,8 +15,9 @@ class Solution
     {
 		
 		var arrlen= a.Length;
-	
 		var tempk= -1;
+		//This method picks an element and adds it to other elements after it.
+		//Since one of the contrainst is that i(first index) > j(second index)
 		for(int i=0; i<arrlen; i++){
 			for(int j=i+1; j<arrlen; j++){
 				var sum=a[i]+a[j];
