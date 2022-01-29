@@ -11,3 +11,25 @@ var removeDuplicates = function(nums) {
     }
     return count;
 };
+
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    var arrlen=nums.length;
+    //start from the first index/pointer
+    var count=0;
+    // i is the second pointer, it iterates through all the elements in the array
+    for(i=1; i<arrlen; i++){
+    //Check if the item at the first pointer is the same as the item at the second pointer
+        if(nums[count]!==nums[i]){
+        //if the items are not the same then we add it to the array from the first pointer
+            nums[count+1]=nums[i];
+            count++
+        }
+    }
+    //Since the count is from zero, we need to add 1 to get the length is the non duplicate array
+    return count+1;
+};
