@@ -15,35 +15,14 @@ class Solution
     {
 		
 		var arrlen= a.Length;
-		int[] lessarr= new int[arrlen-1];
-		var j=0;
+	
+		var tempk= -1;
 		for(int i=0; i<arrlen; i++){
-			var item= a[i];
-			if(item<k)
-			{
-				lessarr[j]=item;
-				j++;
-			}
-		}
-		var newlen= lessarr.Length;
-		lessarr.OrderBy(x=>x);
-		
-		var tempk= 0;
-		for(int l=0; l<newlen; l++){
-			var additme=(lessarr[l]+ lessarr[newlen-(l+1)]);
-			if(additme < k)
-			{
-				if(tempk<additme)
-				{
-					Console.WriteLine("hi");
-					tempk=additme;
+			for(int j=i+1; j<arrlen; j++){
+				var sum=a[i]+a[j];
+				if(sum<k){
+					if(tempk<sum) tempk=sum;
 				}
-			}
-			{
-				if(tempk==0){
-					tempk=-1;
-				}
-				
 			}
 		}
         var result = tempk;
